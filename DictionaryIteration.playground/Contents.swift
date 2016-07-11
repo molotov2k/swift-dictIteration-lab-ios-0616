@@ -18,7 +18,12 @@
  */
 // write your code here
 
-
+var bestAlbumsForBands = [
+    "Nirvana" : "Nevermind",
+    "Blondie" : "Parallel Lines",
+    "The Kinks" : "Low Budget",
+    "The Beatles" : "Sgt. Pepper's Lonely Hearts Club Band",
+]
 
 
 /*: question2
@@ -26,7 +31,7 @@
  */
 // write your code here
 
-
+bestAlbumsForBands["Pixie"] = "Doolittle"
 
 
 /*: question3
@@ -34,7 +39,7 @@
  */
 // write your code here
 
-
+bestAlbumsForBands.removeValueForKey("The Kinks")
 
 
 
@@ -44,7 +49,11 @@
 let bandName = "Nirvana"
 // write your code here
 
-
+if let album = bestAlbumsForBands[bandName] {
+    print("\(bandName)'s top-selling album was \(album)")
+} else {
+    print("\(bandName) sucks and their albums are worthless")
+}
 
 
 /*: question5
@@ -52,22 +61,24 @@ let bandName = "Nirvana"
  */
 // write your code here
 
-
+for (band, album) in bestAlbumsForBands {
+    print("\(band)'s top-selling album was \(album)")
+}
 
 
 /*: question6
  ### 6. What type of data structure is returned when you iterate over a dictionary?
  */
-
+// tuple
 
 
 
 /*: question7
  ### 7. Imagine every student in every grade in a high school took an exam. Each student got a letter grade based on their test results (A, B, C, D, and F). The results were averaged together per grade. How could you represent this mapping of grades to exam average?
  */
-
-
-
+let gradeAvgScoresTmp = [
+    "Grade" : "Average Score"
+]
 
 /*: question8
  ### 8. Create a _constant_ dictionary to store the exam results described in Question 8. This dictionary should be of type `[Int: String]`. Here are the results you can use:
@@ -79,7 +90,12 @@ let bandName = "Nirvana"
  */
 // write your code here
 
-
+let gradeAvgScores = [
+    9 : "B",
+    10 : "A",
+    11 : "C",
+    12 : "B",
+]
 
 
 /*: question9
@@ -87,6 +103,9 @@ let bandName = "Nirvana"
  */
 // write your code here
 
+for (grade, score) in gradeAvgScores {
+    print("\(grade) got \(score)")
+}
 
 
 
@@ -95,7 +114,18 @@ let bandName = "Nirvana"
  */
 // write your code here
 
-
+var record: (grade: Int, score: String, scoreValue: Int) = (0, "", "G".hashValue)
+for (grade, score) in gradeAvgScores {
+    let firstCharValue = score.characters.first?.hashValue
+    if let firstCharValue = firstCharValue {
+        if firstCharValue < record.scoreValue {
+            record.grade = grade
+            record.score = score
+            record.scoreValue = firstCharValue
+        }
+    }
+}
+print("Grade \(record.grade) got the highest score with \(record.score)!")
 
 
 /*:
